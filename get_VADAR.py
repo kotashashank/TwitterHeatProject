@@ -16,12 +16,11 @@ def sentiment_scores(sentence):
 if __name__ == '__main__':
     df = pd.read_csv('manual_filtered_travis_tweets_with_blockgroups_with_scores.csv')
     sentiments = []
-    
     for tweet in df['tweet_text']:
-        print(tweet)
         try:
-            print(tweet)
-            sentiments.append(sentiment_scores(tweet))
+            score = sentiment_scores(tweet)
+            comp = score['compound']
+            sentiments.append(comp)
         except:
             sentiments.append('N/A')  # Append 'N/A' if score extraction fails
 
